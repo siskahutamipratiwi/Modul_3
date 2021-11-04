@@ -1,0 +1,98 @@
+<!--
+    Nama    : Siska Hutami Pratiwi
+    NIM     : 3411191055
+    Kelas   : DSE-B
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Tugas Akhir Validasi</title>
+    </head>
+<body>
+    <div class="container">
+    <h1>Halaman Login</h1>
+<form name="formTugas" id="tugasku" action="" onsubmit="return validateForm()" method="POST">
+    <label>Username</label><br>
+    <input type="text" name="username" id="username"><br>
+    <label>Password</label><br>
+    <input type="password" name="password" id="pass"><br>
+    <label>Ulangi Password</label><br>
+    <input type="password" name="repeat" id="repeat"><br>
+    <label>E-mail</label><br>
+    <input type="text" name="email" id="email"><br>
+    <label>Nomor Telepon</label><br>
+    <input type=”text” name=”telpon” id=”telpon”><br>
+    <label>Alamat</label><br>
+    <input type="text"><br>
+    <button>Submit</button>
+</form>
+<script type="text/javascript">
+function validateForm(){
+    //Username
+    var user = document.formTugas.username.value;
+    if((user.length < 3) || (user.length > 15)){
+        alert("Username harus 3 sampai 15 karakter!");
+        return false;
+    }
+
+    //Password
+    var password = document.formTugas.pass.value;
+    var repeat = document.formTugas.repeat.value;
+    if((password.length && repeat.length < 4)){
+        alert("Password minimal harus 4 karakter!");
+        return false;
+    }
+    re = /[A-Z]/
+    if(!re.test(password && repeat)){
+        alert("Password harus mengandung setidaknya satu huruf besar!");
+        return false;
+    }
+    re = /[0-9]/
+    if(!re.test(password && repeat)){
+        alert("Password harus mengandung setidaknya satu angka!");
+        return false;
+    }
+    re = /[!@#$%^&*]/
+    if(!re.test(password && repeat)){
+        alert("Password harus mengandung setidaknya satu simbol!");
+        return false;
+    }
+    if(password != repeat){
+        alert("Password tidak sama!!!")
+    }
+
+    //Email
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formTugas.email.value)){
+        return (true)
+    }
+    alert("Alamat E-mail tidak valid.")
+    return (false)
+
+    //Telepon
+    var telp = document.formTugas.telpon.value;
+    if((telp.length < 10) || (telp.length > 12)){
+        alert("Nomor telepon minimal harus 10 sampai 12 digit.");
+        return false;
+    }
+    if(isNaN(telp)){
+        alert("Nomor telepon harus berupa angka!");
+        return false;
+    }else{
+        return true;
+    }
+
+    //Alamat
+    var address = document.formTugas.alamat.value;
+    if(user == ""){
+        alert("Alamat jangan dikosongkan!");
+        return false;
+    }else{
+        return true;
+    }
+}
+            </script>
+        </div>
+    </body>
+</html>
